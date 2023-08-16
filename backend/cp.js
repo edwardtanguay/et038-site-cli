@@ -20,4 +20,5 @@ if (!pageName) {
 	tools.addLineInFile(`./src/Router.ts`, '@@FIRSTLINE', `import { Page${pageName} } from './pages/Page${pageName}';`);
 	tools.addLineInFile(`./src/Router.ts`, 'switch (', `		case '${pageName.toLowerCase()}':
 			return Page${pageName}();`);
+	tools.changeLineInFile(`./src/Router.ts`, 'const pageNames =', ']', ` ,${pageName}`);
 }

@@ -97,3 +97,22 @@ export const isEmpty = (line) => {
 		}
 	}
 };
+
+export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInsert) => {
+	const content = fs.readFileSync(pathAndFileName, { encoding: 'utf8' });
+	const lines = tools.convertStringBlockToLines(content);
+	let newLines = [];
+	for (const line of lines) {
+		if (newLine.includes(marker)) {
+			let newLine = line;
+			newLine = newLine + ' // this is a change';
+			newLines.push(newLine);
+		} else {
+			newLines.push(line);
+		}
+		lineNumber++;
+	}
+	const newContent = tools.convertLinesToStringBlock(newLines);
+	tools.createFile(pathAndFileName, newContent);
+
+};
