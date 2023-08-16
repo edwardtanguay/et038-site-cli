@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export const createFile = (pathAndFileName, content) => {
 	fs.writeFileSync(pathAndFileName, content.trim());
 };
