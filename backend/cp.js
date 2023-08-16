@@ -17,7 +17,7 @@ if (!pageName) {
 }`);
 
 	// add page to router
-	qfil.addLineInFile(`./src/Router.ts`, '@@FIRSTLINE', `import { Page${pageName} } from './pages/Pages${idCodeSnakeCase}';`);
-	qfil.addLineInFile(`./src/Router.ts`, 'switch (', `		case '${pageName.toLowerCase()}':
+	tools.addLineInFile(`./src/Router.ts`, '@@FIRSTLINE', `import { Page${pageName} } from './pages/Pages${idCodeSnakeCase}';`);
+	tools.addLineInFile(`./src/Router.ts`, 'switch (', `		case '${pageName.toLowerCase()}':
 			return Page${pageName}();`);
 }
