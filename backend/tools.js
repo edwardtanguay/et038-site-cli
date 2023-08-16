@@ -1,10 +1,25 @@
 import fs from 'fs';
 import * as tools from './tools.js';
 
+/**
+ * Creates a file with content
+ * 
+ * tools.createFile('../logs/log.txt', 'added item');
+ * 
+ * (file is created)
+ */
 export const createFile = (pathAndFileName, content) => {
 	fs.writeFileSync(pathAndFileName, content.trim());
 };
 
+/**
+ * Adds a line to a specific point in a file
+ * 
+ * tools.addLineInFile(`./src/main.ts`, '@@FIRSTLINE', `import { ${idCodeSnakeCase} } from './examples/${idCodeSnakeCase}';`);
+ * tools.addLineInFile(`./src/Router.ts`, 'switch (', `case '${pageName.toLowerCase()}':\nreturn Page${pageName}();`);
+ * 
+ * (line is added)
+ */
 export const addLineInFile = (pathAndFileName, marker, additionalLine) => {
 	const content = fs.readFileSync(pathAndFileName, { encoding: 'utf8' });
 	const lines = tools.convertStringBlockToLines(content);
