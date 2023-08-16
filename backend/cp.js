@@ -1,3 +1,10 @@
-import * as tools from './tools.js';
+// import * as tools from './tools.js';
 
-console.log('cli test: ' + tools.getTestMessage());
+const pageName = process.argv[2];
+
+if (!pageName) {
+	console.log('EXAMPLE: npm run cp Reports');
+	process.exit();
+} else {
+	console.log(`building page "${pageName}"...`);
+}
