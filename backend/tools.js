@@ -98,6 +98,13 @@ export const isEmpty = (line) => {
 	}
 };
 
+export const insertStringAfterMarkerInString = (line, marker, textToInsert) => {
+	const parts = text.split(marker); 
+	const firstPart = parts[0];
+	const secondPart = parts[1];
+	return firstPart + textToInsert + marker + secondPart;
+}
+
 export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInsert) => {
 	const content = fs.readFileSync(pathAndFileName, { encoding: 'utf8' });
 	const lines = tools.convertStringBlockToLines(content);
@@ -105,7 +112,7 @@ export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInse
 	for (const line of lines) {
 		let newLine = line;
 		if (newLine.includes(marker)) {
-			newLine = newLine + ' // this is a change';
+			newLine = insertStringAfterMarkerInString(line, lineMarker, textToInsert);
 			newLines.push(newLine);
 		} else {
 			newLines.push(line);
