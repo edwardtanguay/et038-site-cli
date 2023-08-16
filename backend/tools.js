@@ -103,8 +103,8 @@ export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInse
 	const lines = tools.convertStringBlockToLines(content);
 	let newLines = [];
 	for (const line of lines) {
+		let newLine = line;
 		if (newLine.includes(marker)) {
-			let newLine = line;
 			newLine = newLine + ' // this is a change';
 			newLines.push(newLine);
 		} else {
