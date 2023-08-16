@@ -99,7 +99,7 @@ export const isEmpty = (line) => {
 };
 
 export const insertStringAfterMarkerInString = (line, marker, textToInsert) => {
-	const parts = text.split(marker); 
+	const parts = line.split(marker); 
 	const firstPart = parts[0];
 	const secondPart = parts[1];
 	return firstPart + textToInsert + marker + secondPart;
