@@ -110,7 +110,6 @@ export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInse
 		} else {
 			newLines.push(line);
 		}
-		lineNumber++;
 	}
 	const newContent = tools.convertLinesToStringBlock(newLines);
 	tools.createFile(pathAndFileName, newContent);
