@@ -40,6 +40,13 @@ export const addLineInFile = (pathAndFileName, marker, additionalLine) => {
 	tools.createFile(pathAndFileName, newContent);
 };
 
+/**
+ * Converts an array of strings to a string with newline characters
+ * 
+ * const content = tools.convertLinesToStringBlock(lines);
+ * 
+ * "line1\nline2\nline3"
+ */
 export const convertLinesToStringBlock = (lines) => {
 	let r = '';
 	let index = 0;
@@ -53,6 +60,14 @@ export const convertLinesToStringBlock = (lines) => {
 	return r;
 };
 
+
+/**
+ * Converts a string with newline characters to an array of strings, one per line 
+ * 
+ * const lines: string[] = tools.convertStringBlockToLines(content);
+ * 
+ * ['line1', 'line2', 'line3']
+ */
 export const convertStringBlockToLines = (stringBlock, trimLines = true) => {
 	let roughLines = [];
 
@@ -67,6 +82,15 @@ export const convertStringBlockToLines = (stringBlock, trimLines = true) => {
 	return roughLines;
 };
 
+/**
+ * Trims every string in a string array
+ * 
+ * roughLines = ['line1  ', 'line2'];
+ * 
+ * roughLines = qstr.trimAllLinesInLinesArray(roughLines);
+ * 
+ * ['line1','line2']
+ */
 export const trimAllLinesInLinesArray = (lines) => {
 	const newLines = [];
 	lines.forEach(function (line) {
@@ -76,6 +100,15 @@ export const trimAllLinesInLinesArray = (lines) => {
 	return newLines;
 };
 
+/**
+ * Removes blank strings from the beginning and end of a string of arrays
+ * 
+ * roughLines = ['', 'line1', 'line2', ''];
+ * 
+ * roughLines = qstr.removeEmptyLinesFromLinesAtBeginningAndEnd(roughLines);
+ * 
+ * ['line1','line2']
+ */
 export const removeEmptyLinesFromLinesAtBeginningAndEnd = (lines) => {
 	lines = tools.trimAllLinesInLinesArray(lines);
 	lines = tools.removeBlankLinesFromBeginning(lines);
@@ -85,6 +118,15 @@ export const removeEmptyLinesFromLinesAtBeginningAndEnd = (lines) => {
 	return lines;
 };
 
+/**
+ * Removes blank strings from the beginning of a string of arrays
+ * 
+ * roughLines = ['', 'line1', 'line2'];
+ * 
+ * roughLines = qstr.removeBlankLinesFromBeginning(roughLines);
+ * 
+ * ['line1','line2']
+ */
 export const removeBlankLinesFromBeginning = (lines) => {
 	const newLines = [];
 	let trimmingBlanks = true;
@@ -100,6 +142,13 @@ export const removeBlankLinesFromBeginning = (lines) => {
 	return newLines;
 };
 
+/**
+ * Check if a string is empty, undefined, null, etc.
+ * 
+ * if(qstr.empty(text)) {
+ * 
+ * true
+ */
 export const isEmpty = (line) => {
 	if (line === undefined || line === null) {
 		return true;
@@ -113,6 +162,13 @@ export const isEmpty = (line) => {
 	}
 };
 
+/**
+ * Inserts a text into another text at the point where a certain marker is.
+ * 
+ * const newLine = tools.insertStringAfterMarkerInString(line, lineMarker, textToInsert);
+ * 
+ * newLine contains new text 
+ */
 export const insertStringAfterMarkerInString = (line, marker, textToInsert) => {
 	const parts = line.split(marker); 
 	const firstPart = parts[0];
@@ -120,6 +176,13 @@ export const insertStringAfterMarkerInString = (line, marker, textToInsert) => {
 	return firstPart + textToInsert + marker + secondPart;
 }
 
+/**
+ * Changes text in a line at the point before a unique marker.
+ * 
+ * tools.changeLineInFile(`./src/Router.ts`, 'const pageNames =', ']', ` ,'${pageName}'`);
+ * 
+ * line in file is changed
+ */
 export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInsert) => {
 	const content = fs.readFileSync(pathAndFileName, { encoding: 'utf8' });
 	const lines = tools.convertStringBlockToLines(content);
@@ -127,7 +190,7 @@ export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInse
 	for (const line of lines) {
 		let newLine = line;
 		if (newLine.includes(marker)) {
-			newLine = insertStringAfterMarkerInString(line, lineMarker, textToInsert);
+			newLine = tools.insertStringAfterMarkerInString(line, lineMarker, textToInsert);
 			newLines.push(newLine);
 		} else {
 			newLines.push(line);
@@ -135,5 +198,4 @@ export const changeLineInFile = (pathAndFileName, marker, lineMarker, textToInse
 	}
 	const newContent = tools.convertLinesToStringBlock(newLines);
 	tools.createFile(pathAndFileName, newContent);
-
 };
