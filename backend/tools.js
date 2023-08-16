@@ -84,3 +84,16 @@ export const removeBlankLinesFromBeginning = (lines) => {
 	});
 	return newLines;
 };
+
+export const isEmpty = (line) => {
+	if (line === undefined || line === null) {
+		return true;
+	} else {
+		line = line.toString();
+		if (line.trim() == '') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+};
