@@ -13,7 +13,7 @@ export const getCurrentPageIdCode = () => {
 /**
  * REPLACE ALL OCCURANCES IN A STRING:
  *
- * qstr.replaceAll("This is a tost.", "o", "e");
+ * tools.replaceAll("This is a tost.", "o", "e");
  *
  * "This is a test."
  */

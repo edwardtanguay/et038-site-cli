@@ -87,7 +87,7 @@ export const convertStringBlockToLines = (stringBlock, trimLines = true) => {
  * 
  * roughLines = ['line1  ', 'line2'];
  * 
- * roughLines = qstr.trimAllLinesInLinesArray(roughLines);
+ * roughLines = tools.trimAllLinesInLinesArray(roughLines);
  * 
  * ['line1','line2']
  */
@@ -105,7 +105,7 @@ export const trimAllLinesInLinesArray = (lines) => {
  * 
  * roughLines = ['', 'line1', 'line2', ''];
  * 
- * roughLines = qstr.removeEmptyLinesFromLinesAtBeginningAndEnd(roughLines);
+ * roughLines = tools.removeEmptyLinesFromLinesAtBeginningAndEnd(roughLines);
  * 
  * ['line1','line2']
  */
@@ -123,7 +123,7 @@ export const removeEmptyLinesFromLinesAtBeginningAndEnd = (lines) => {
  * 
  * roughLines = ['', 'line1', 'line2'];
  * 
- * roughLines = qstr.removeBlankLinesFromBeginning(roughLines);
+ * roughLines = tools.removeBlankLinesFromBeginning(roughLines);
  * 
  * ['line1','line2']
  */
@@ -145,7 +145,7 @@ export const removeBlankLinesFromBeginning = (lines) => {
 /**
  * Check if a string is empty, undefined, null, etc.
  * 
- * if(qstr.empty(text)) {
+ * if(tools.empty(text)) {
  * 
  * true
  */
