@@ -8,13 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "cp": "node backend/cp.js"
-    
   },
   "devDependencies": {
     "typescript": "^5.0.2",
     "vite": "^4.3.9"
   },
   "dependencies": {
+    "readline-sync": "^1.4.10",
     "sass": "^1.62.1"
   }
 }

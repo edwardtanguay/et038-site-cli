@@ -1,10 +1,11 @@
 import * as tools from './tools.js';
+import readlineSync from 'readline-sync';
 
-const pageName = process.argv[2];
+let pageName = process.argv[2];
 
 if (!pageName) {
-	console.log('EXAMPLE: npm run cp Reports');
-	process.exit();
+	pageName = readlineSync.question('Page name to create: ');
+	console.log(`creating page "${pageName}"...`);
 } else {
 
 	// create code file
