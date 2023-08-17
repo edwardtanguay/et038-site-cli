@@ -1,5 +1,5 @@
-import { createPage } from './siteManager.js';
 import readlineSync from 'readline-sync';
+import { createPage } from './siteManager.js';
 
 let pageName = process.argv[2];
 
