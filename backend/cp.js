@@ -5,9 +5,8 @@ let pageName = process.argv[2];
 
 if (!pageName) {
 	pageName = readlineSync.question('Page name to create (e.g. "About"): ');
-	let introLine = `This is the ${pageName} page.`;
-	introLine = readlineSync.question('Intro line on page: ');
-	createPage(pageName);
+	customIntroLine = readlineSync.question(`Custom intro line on page (press ENTER for default text): `);
+	createPage(pageName, customIntroLine);
 } else {
 	createPage(pageName)
 }
